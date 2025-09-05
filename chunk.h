@@ -32,6 +32,7 @@ typedef struct {
     int count; // the number of items added to the array 
     int capacity; // the full amount of element the array can have
     uint8_t* code; // the instruction code
+    int* lines; // the line number for each instruction. This helps in debugging when runtime error occurs
     ValueArray constants; // the constants used in the bytecode
 } Chunk;
 
@@ -47,7 +48,7 @@ void initChunk(Chunk* chunk);
 * @param byte
 * @return void
 */
-void writeChunk(Chunk* chunk, uint8_t byte);
+void writeChunk(Chunk* chunk, uint8_t byte, int line);
 /*
 * @brief free the memory allocated for the chunk
 * @param chunk
